@@ -26,8 +26,11 @@ jobs:
       run: make install_k3d    
     - name: "Install argo client"
       run: make install_argo  
-    - name: Setup local cluster
+    - name: "Setup local cluster"
       run: |
         make create_cluster
         make switch_context
         make create_namespace               
+    - name: "post setup"
+      run: |
+        kubectl cluster-info
